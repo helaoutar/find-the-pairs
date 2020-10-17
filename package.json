@@ -5,11 +5,24 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "yarn run build && next export"
   },
   "dependencies": {
+    "antd": "^4.7.0",
     "next": "9.5.5",
+    "next-redux-wrapper": "^6.0.2",
     "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react-dom": "16.14.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
+    "reselect": "^4.0.0",
+    "styled-components": "^5.2.0",
+    "with-redux": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-plugin-react": "^7.21.4"
   }
 }

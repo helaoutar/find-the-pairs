@@ -1,65 +1,57 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setGameStarted,
+  setCards,
+  setFoundCards,
+  setFirstCard,
+  setSecondCard,
+  setNumberOfTries,
+} from "../actions";
+import { makeGrid } from "../libs";
 
-export default function Home() {
+import SideBar from "../components/SideBar/SideBar";
+import CardGrid from "../components/CardGrid/CardGrid";
+
+import {
+  Body,
+  CardsGridContainer,
+  SideBarContainer,
+  HeaderContainer,
+} from "../components/Layout/Layout";
+
+const Index = () => {
+  const gameStarted = useSelector((state) => state.gameStarted);
+  const numberOfPairs = useSelector((state) => state.numberOfPairs);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!gameStarted) {
+      setTimeout(() => {
+        dispatch(setGameStarted(true));
+      }, 5000);
+      dispatch(setCards(makeGrid(numberOfPairs)));
+      dispatch(setFoundCards({}));
+      dispatch(setFirstCard(null));
+      dispatch(setSecondCard(null));
+      dispatch(setNumberOfTries(0));
+    }
+  }, [gameStarted]);
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <HeaderContainer>Find the pairs</HeaderContainer>
+      <Body>
+        <CardsGridContainer>
+          <CardGrid />
+        </CardsGridContainer>
+        <SideBarContainer>
+          <SideBar />
+        </SideBarContainer>
+      </Body>
+    </>
+  );
+};
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
-}
+export default Index;
