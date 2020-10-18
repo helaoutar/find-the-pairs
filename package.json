@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "yarn run build && next export"
+    "start": "next start"
   },
   "dependencies": {
     "antd": "^4.7.0",
@@ -24,5 +23,8 @@
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-plugin-react": "^7.21.4"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

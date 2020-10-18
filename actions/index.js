@@ -11,6 +11,7 @@ const actions = createActions({
 });
 
 const {
+  setNumberOfPairs,
   setGameStarted,
   setCards,
   setFoundCards,
@@ -20,6 +21,7 @@ const {
 } = actions;
 
 export {
+  setNumberOfPairs,
   setGameStarted,
   setCards,
   setFoundCards,

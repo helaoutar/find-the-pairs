@@ -4,6 +4,7 @@ export const Body = styled.div({
   display: "flex",
   height: "100%",
   alignItems: "flex-start",
+  padding: "0 5%",
 });
 
 export const CardsGridContainer = styled.section({
@@ -11,13 +12,13 @@ export const CardsGridContainer = styled.section({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  marginTop: -20,
   padding: "0 20px",
 });
 
 export const SideBarContainer = styled.section({
   padding: "0 56px",
   width: 262,
+  boxSizing: "initial",
 });
 
 export const HeaderContainer = styled.header({

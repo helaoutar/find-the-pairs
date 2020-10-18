@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div(({ hidden }) => ({
   ...(hidden ? { visibility: "hidden" } : {}),
-  display: "block",
+  display: "block !important",
   width: 137,
   height: 145,
   cursor: "pointer",
